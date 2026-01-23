@@ -1,0 +1,9 @@
+node_modules
+dist
+build
+
+# gh-pages deployment
+.gh-pages/
+# Environment variables
+.env
+.env.local

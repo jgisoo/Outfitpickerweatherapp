@@ -15,17 +15,17 @@ export function OutfitIllustration({ outfit, temperature }: OutfitIllustrationPr
 
   return (
     <motion.div
-      className="relative w-44 h-56 bg-gradient-to-b from-orange-50 to-yellow-50 rounded-2xl p-3 shadow-lg border-2 border-orange-200"
+      className="relative w-44 h-56 bg-gradient-to-b from-orange-50 to-yellow-50 rounded-2xl p-3 shadow-lg border-2 border-orange-200 overflow-hidden"
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: 'spring', stiffness: 200, damping: 20 }}
     >
       {/* Outfit Stack */}
-      <div className="flex flex-col items-center justify-center h-full relative">
+      <div className="flex flex-col items-center justify-center h-full relative overflow-hidden">
         {/* Hat/Beanie (if cold) */}
         {hasAccessory && accessory?.icon === '🧢' && (
           <motion.div
-            className="text-6xl mb-1"
+            className="text-5xl mb-1 flex-shrink-0"
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.1 }}
@@ -36,7 +36,7 @@ export function OutfitIllustration({ outfit, temperature }: OutfitIllustrationPr
 
         {/* Head */}
         <motion.div
-          className="w-14 h-14 bg-gradient-to-b from-orange-200 to-orange-300 rounded-full mb-2"
+          className="w-12 h-12 bg-gradient-to-b from-orange-200 to-orange-300 rounded-full mb-1 flex-shrink-0"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.2, type: 'spring' }}
@@ -56,12 +56,12 @@ export function OutfitIllustration({ outfit, temperature }: OutfitIllustrationPr
 
         {/* Top/Jacket */}
         <motion.div
-          className="relative z-10"
+          className="relative z-10 flex-shrink-0 max-w-full"
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <div className="text-7xl">
+          <div className="text-6xl leading-none">
             {top?.icon || '👕'}
           </div>
         </motion.div>
@@ -81,7 +81,7 @@ export function OutfitIllustration({ outfit, temperature }: OutfitIllustrationPr
 
         {/* Pants/Bottoms */}
         <motion.div
-          className="text-6xl -mt-3"
+          className="text-5xl -mt-2 flex-shrink-0 leading-none"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
@@ -91,7 +91,7 @@ export function OutfitIllustration({ outfit, temperature }: OutfitIllustrationPr
 
         {/* Shoes */}
         <motion.div
-          className="text-5xl mt-1"
+          className="text-4xl -mt-1 flex-shrink-0 leading-none"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5 }}

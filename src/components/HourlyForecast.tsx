@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { getOutfitRecommendation } from '../utils/outfitLogic';
+import { WeatherTheme } from '../utils/weatherTheme';
 
 interface HourlyForecastProps {
   time: string;
@@ -8,9 +9,10 @@ interface HourlyForecastProps {
   condition: string;
   precipitation: number;
   delay: number;
+  theme: WeatherTheme;
 }
 
-export function HourlyForecast({ time, temp, icon, condition, precipitation, delay }: HourlyForecastProps) {
+export function HourlyForecast({ time, temp, icon, condition, precipitation, delay, theme }: HourlyForecastProps) {
   const outfit = getOutfitRecommendation(temp, condition, precipitation);
   const top = outfit.find(item => item.category === 'top');
   const bottom = outfit.find(item => item.category === 'bottom');
@@ -18,7 +20,7 @@ export function HourlyForecast({ time, temp, icon, condition, precipitation, del
 
   return (
     <motion.div
-      className="bg-yellow-400 rounded-2xl p-2 flex flex-col items-center gap-1 cursor-pointer shadow-md relative overflow-hidden"
+      className={`${theme.cardBg} rounded-2xl p-2 flex flex-col items-center gap-1 cursor-pointer shadow-md relative overflow-hidden`}
       initial={{ scale: 0, rotate: -10 }}
       animate={{ scale: 1, rotate: 0 }}
       transition={{ delay, type: 'spring', stiffness: 200 }}
@@ -63,8 +65,8 @@ export function HourlyForecast({ time, temp, icon, condition, precipitation, del
         </motion.div>
       </div>
       
-      <div className="text-xs text-gray-800">{time}</div>
-      <div className="text-xs text-gray-700">{temp}°</div>
+      <div className={`text-xs ${theme.textPrimary}`}>{time}</div>
+      <div className={`text-xs ${theme.textSecondary}`}>{temp}°</div>
     </motion.div>
   );
 }
